@@ -1,0 +1,36 @@
+.tag-container ::placeholder {
+    font-size: 15px !important;
+}
+
+.tag-container input {
+    width: 50% !important;
+    margin-left: 20px !important;
+    margin-top: 0px;    
+ 
+}
+
+
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+    height: 15px;
+    width: 30px;
+    margin-right: 5px;
+    margin-top: 15px;
+    background-color: lightgray;
+    flex-direction: row;
+}
+
+.tag-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+

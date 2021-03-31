@@ -1,0 +1,13 @@
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: lightgray;
+    height: 50px;
+    width: 90%;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+::placeholder {
+    font-size: 25px;
+    color: lightgrey;
+}

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;500;700&display=swap');
+
+.detail > img {
+    height: 120px;
+    width: 120px;
+    border-radius: 80px;
+    border: 2px solid lightgray;
+}
+.detail {
+    margin-left: 20px;
+    margin-top: 5%;
+    display: flex;
+    line-height: 1.4;
+}
+
+.student__info {
+    margin-left: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.bold {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+button {
+    font-size: 50px;
+    width: 100px;
+    background: white;
+    border: none;
+    color: lightgrey;
+    position: absolute;
+    right: 150px;
+
+}
+.gradeList {
+    margin-top: 20px;
+    line-height: 0 !important;
+    margin-left: 20px;
+}
