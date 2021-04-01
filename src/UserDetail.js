@@ -4,7 +4,7 @@ import './UserDetail.css'
 
 
 
-function UserDetail( {user}) {
+function UserDetail( {user, handleTagTerm}) {
 
     const [showGrades, setShowGrades] =  useState(false);
     const [btnText, setbtnText] = useState("+");
@@ -38,7 +38,7 @@ function UserDetail( {user}) {
                     <div className="gradeList">Test {index+1}: {grade}%</div>
                 )}</div>)
             }
-            <TagDetail />
+            <TagDetail userId={user.id} handleTagTerm={handleTagTerm} />
             </div>
         </div>
         

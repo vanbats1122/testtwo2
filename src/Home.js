@@ -33,6 +33,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
+        console.log(searchTerm)
         const results = searchTerm ? users.filter(user=> (`${user.firstName} ${user.lastName}`)?.toUpperCase()
         .includes(searchTerm?.toUpperCase())) : users;
         setSearchResults(results);
@@ -49,6 +50,10 @@ function Home() {
         setSearchTerm(event.target.value)
     }
 
+    const handleTagTerm = (id, tags) => {
+
+    }
+
     if(loading) return <div>Loading...</div>
     if(error) return <div>Error</div>
     if(!users) return null;
@@ -57,7 +62,7 @@ function Home() {
         <div className="main">
             <SearchBar placeholder="Search by name" onChange={handleChange} value={searchTerm}/>
             {/* <TagSearchBar placeholder="Search by tag" onChange={handleChange} value={searchTerm} tags={tagResults}/> */}
-            <UserList users={searchResults}/>
+            <UserList users={searchResults} handleTagTerm={handleTagTerm} />
         </div>
     )
 }
