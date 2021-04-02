@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 import UserList from './UserList';
 import SearchBar from './SearchBar';
-import './Home.css'
-// import TagSearchBar from './TagSearchBar';
-// import TagDetail from './TagDetail.js'
+import './Home.css';
 
 function Home() {
 
@@ -13,8 +11,6 @@ function Home() {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-    // const [tags, setTags] = useState([]);
-    // const [tagResults, setTagResults] =  useState([]);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -33,24 +29,29 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        console.log(searchTerm)
-        const results = searchTerm ? users.filter(user=> (`${user.firstName} ${user.lastName}`)?.toUpperCase()
-        .includes(searchTerm?.toUpperCase())) : users;
-        setSearchResults(results);
-    }, [searchTerm]);
+        if(!loading) {
+            const results = searchTerm ? users.filter(user=> (`${user.firstName} ${user.lastName}`)?.toUpperCase()
+            .includes(searchTerm?.toUpperCase())) : users;
+            setSearchResults(results);
+        }
+    }, [searchTerm, loading]);
 
-    // useEffect(() => {
-    //     const tagresults = searchTerm ? tags.filter(tag=> (`${tag.key}`)?.toUpperCase()
-    //     .includes(searchTerm?.toUpperCase())) : tags;
-    //     setSearchResults(tagresults);
-    // }, [searchTerm]);
     
     
     const handleChange =  event => {
         setSearchTerm(event.target.value)
     }
 
-    const handleTagTerm = (id, tags) => {
+    const handleTags = (id, tag) => {
+        setUsers(users.map(user => {
+            if(user.id === id) {
+            user.tags = user.tags || [];
+            user.tags = [...user.tags, tag];
+        }
+        return user;
+    
+        })
+        )
 
     }
 
@@ -61,8 +62,7 @@ function Home() {
     return (
         <div className="main">
             <SearchBar placeholder="Search by name" onChange={handleChange} value={searchTerm}/>
-            {/* <TagSearchBar placeholder="Search by tag" onChange={handleChange} value={searchTerm} tags={tagResults}/> */}
-            <UserList users={searchResults} handleTagTerm={handleTagTerm} />
+            <UserList users={searchResults} handleTags={handleTags} />
         </div>
     )
 }

@@ -1,14 +1,14 @@
-import React from 'react'
-import UserDetail from './UserDetail'
+import React from 'react';
+import UserDetail from './UserDetail';
 
-function UserList({users, handleTagTerm}) {
+function UserList({users, handleTags}) {
     return (
         <ul>
             {users?.map(user => (
-                <UserDetail user={user} handleTagTerm={handleTagTerm} />
+                <UserDetail user={user} handleTags={handleTags} tags={user.tags} />
             ))}
         </ul>
     )
 }
 
-export default UserList
+export default UserList;
