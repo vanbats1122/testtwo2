@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import UserList from './UserList';
@@ -11,6 +13,7 @@ function Home() {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -30,17 +33,17 @@ function Home() {
 
     useEffect(() => {
         if(!loading) {
-            const results = searchTerm ? users.filter(user=> (`${user.firstName} ${user.lastName}`)?.toUpperCase()
+            const results = searchTerm ? users.filter(user => (`${user.firstName} ${user.lastName}`)?.toUpperCase()
             .includes(searchTerm?.toUpperCase())) : users;
             setSearchResults(results);
         }
-    }, [searchTerm, loading]);
-
+        }, [searchTerm, loading]);
     
     
     const handleChange =  event => {
-        setSearchTerm(event.target.value)
+        setSearchTerm(event.target.value);
     }
+
 
     const handleTags = (id, tag) => {
         setUsers(users.map(user => {
@@ -62,7 +65,7 @@ function Home() {
     return (
         <div className="main">
             <SearchBar placeholder="Search by name" onChange={handleChange} value={searchTerm}/>
-            <UserList users={searchResults} handleTags={handleTags} />
+            <UserList users={searchResults} handleTags={handleTags}/>
         </div>
     )
 }
